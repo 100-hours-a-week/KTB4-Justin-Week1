@@ -5,7 +5,7 @@ public class Player {
     int maxExp = 100;
     int maxMesos = 99999;
     int maxLevel = 50;
-    int jobTier = 0; //전직 상태 1,2,3,4
+    int jobTier = 0;
     String weapon = "맨손";
     double expRate = 1.0;
     double mesosRate = 1.0;
