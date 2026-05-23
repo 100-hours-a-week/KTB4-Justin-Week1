@@ -9,6 +9,8 @@ public class Player {
     String weapon = "맨손";
     double expRate = 1.0;
     double mesosRate = 1.0;
+    private AutoHunt autoHunt;
+    private Thread autoHuntThread;
 
     public String getJobName() {
         return "초보자";
@@ -20,8 +22,8 @@ public class Player {
             level++;
             maxExp += 50;
 
-            System.out.println("레벨 업!");
-            System.out.println("현재 레벨은 " + level + "입니다.");
+//            System.out.println("레벨 업!");
+//            System.out.println("현재 레벨은 " + level + "입니다.");
         }
 
         else{
@@ -57,14 +59,14 @@ public class Player {
 
         Monster monster = getMonster();
 
-        useSkill();
+//        useSkill();
 
         int finalExp = (int)(monster.exp * expRate);
         int finalMesos = (int)(monster.mesos * mesosRate);
 
-        System.out.println(monster.name + "을(를) 처치하였습니다.");
-        System.out.println("획득 경험치: " + finalExp);
-        System.out.println("획득 메소: " + finalMesos);
+//        System.out.println(monster.name + "을(를) 처치하였습니다.");
+//        System.out.println("획득 경험치: " + finalExp);
+//        System.out.println("획득 메소: " + finalMesos);
 
         exp += finalExp;
         mesos += finalMesos;
@@ -75,6 +77,26 @@ public class Player {
             levelUp();
         }
     }
+    public void startAutoHunt(){
+
+        if (autoHuntThread != null && autoHuntThread.isAlive()) {
+            System.out.println("이미 사냥이 진행중입니다!");
+            return;
+        }
+
+        autoHunt = new AutoHunt(this);
+
+        autoHuntThread = new Thread(autoHunt);
+
+        autoHuntThread.start();
+    }
+
+    public void stopAutoHunt(){
+        if (autoHunt != null){
+            autoHunt.stop();
+        }
+    }
+
     public void advance() {
 
         if (jobTier >= 4) {

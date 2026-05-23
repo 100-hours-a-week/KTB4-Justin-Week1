@@ -76,7 +76,30 @@ public class Main {
             switch (menuChoice) {
 
                 case 1:
-                    player.hunt();
+
+                    System.out.println("1. 직접 사냥");
+                    System.out.println("2. 자동 사냥");
+                    System.out.println("3. 자동 사냥 종료");
+
+                    int huntChoice = sc.nextInt();
+
+                    switch (huntChoice) {
+
+                        case 1:
+                            player.hunt();
+                            break;
+
+                        case 2:
+                            player.startAutoHunt();
+                            break;
+
+                        case 3:
+                            player.stopAutoHunt();
+                            break;
+
+                        default:
+                            System.out.println("올바른 번호를 입력해주세요!");
+                    }
                     break;
 
                 case 2: {
