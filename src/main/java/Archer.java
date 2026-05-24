@@ -1,6 +1,6 @@
 public class Archer extends Player{
     @Override
-    public void weaponPurchase(int weaponChoice){
+    public synchronized void weaponPurchase(int weaponChoice) {
 
         int price = 50;
         if (weaponChoice == 5 || weaponChoice == 6){

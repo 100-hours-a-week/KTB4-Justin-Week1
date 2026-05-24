@@ -1,6 +1,6 @@
 public class Pirate extends Player{
     @Override
-    public void weaponPurchase(int weaponChoice){
+    public synchronized void weaponPurchase(int weaponChoice) {
 
         int price = 50;
         if (weaponChoice == 9 || weaponChoice == 10){

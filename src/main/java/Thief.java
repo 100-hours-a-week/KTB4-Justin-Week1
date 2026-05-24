@@ -1,6 +1,6 @@
 public class Thief extends Player{
     @Override
-    public void weaponPurchase(int weaponChoice){
+    public synchronized void weaponPurchase(int weaponChoice) {
 
         int price = 50;
         if (weaponChoice == 7 || weaponChoice == 8){

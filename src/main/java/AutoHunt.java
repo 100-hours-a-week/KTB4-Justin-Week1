@@ -1,24 +1,30 @@
-public class AutoHunt implements Runnable{
-    private Player player;
+public class AutoHunt implements Runnable {
+    private final Player player;
     private volatile boolean running = true;
 
-    public AutoHunt(Player player){
+    public AutoHunt(Player player) {
         this.player = player;
     }
 
     @Override
     public void run() {
-        while(running){
+        while (running) {
             player.hunt();
-            try{
+
+            if (!running) {
+                break;
+            }
+
+            try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
+                break;
             }
         }
     }
-    public void stop(){
-        System.out.println("사냥을 종료합니다.");
+
+    public void stop() {
         running = false;
     }
 }

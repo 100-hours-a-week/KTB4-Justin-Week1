@@ -7,23 +7,23 @@ public class Buccaneer extends Archer{
     public void useSkill(){
 
         if(jobTier == 0) {
-            System.out.println("달팽이 세마리!");
+            huntPrint("달팽이 세마리!");
         }
 
         else if(jobTier == 1) {
-            System.out.println("스트레이트!");
+            huntPrint("스트레이트!");
         }
 
         else if(jobTier == 2) {
-            System.out.println("백 스핀 블로우!");
+            huntPrint("백 스핀 블로우!");
         }
 
         else if(jobTier == 3) {
-            System.out.println("에너지 버스터!");
+            huntPrint("에너지 버스터!");
         }
 
         else if(jobTier == 4) {
-            System.out.println("데몰리터!");
+            huntPrint("데몰리터!");
         }
     }
 }
